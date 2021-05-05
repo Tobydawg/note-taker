@@ -17,7 +17,7 @@ const { v4: uuid } = require("uuid");
 //     }  )
 // }
 
-router.get('/get', (req, res) => {
+router.get('/notes', (req, res) => {
    
         console.log(notes);
         return res.json(notes)
@@ -30,6 +30,13 @@ router.get('/get', (req, res) => {
     
 //     const  { title, text } = note
 //     const newNote = {  title, text, id:uuid   }
+
+// Take a look at the delete route from earlier, that should give you a better idea of where to start here. 
+
+// Your note needs 3 things an ID, title and text to be able to post. also look at the res.send  as well. 
+// I understand that this assignment can be frustrating at times but build off of what you know already works. 
+
+
    
     
 // }
@@ -51,7 +58,7 @@ router.post('/notes', (req, res) => {
 });
 
 router.delete('/notes/:id', (req, res) =>{
-    let noteId = req.params.id;
+    let noteId = (req.params.id);
 
     fs.readFile("./db/db.json", "utf8", (err, data) => {
       if (err) throw err;
@@ -66,7 +73,6 @@ router.delete('/notes/:id', (req, res) =>{
       });
     });
   });
-
 
 // router.delete('/notes/:id', (req, res) =>{
 // const deleteNote = (req.params.id)
