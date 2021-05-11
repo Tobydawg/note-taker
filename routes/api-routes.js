@@ -20,7 +20,11 @@ const { v4: uuid } = require("uuid");
 router.get('/notes', (req, res) => {
    
         console.log(notes);
-        return res.json(notes)
+        fs.readFile('./db/db.json', 'utf8', (err, data) => {
+          console.log('data', data);
+          console.log(typeof data);
+          return res.json(JSON.parse(data))
+        })
    
 });
 // notes get all the notes from my file (can call getNotes) then append the new notes to the end of getNotes, then 
